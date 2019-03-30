@@ -16,7 +16,7 @@ body, input, label, select, option, textarea, button, fieldset, legend {
 body {
   margin: 0;
   padding: 0;
-  background: #FAFAFA; }
+  background: #eff0f6; }
 
 a {
   color: #212121;
@@ -463,8 +463,8 @@ main {
 
 .home-article-wrapper {
   display: block;
-  min-height: 330px;
-  margin: 30px 0;
+  /*min-height: 330px;*/
+  margin: 40px 0;
   border-radius: 10px; }
 .home-article-cover {
   position: absolute;
