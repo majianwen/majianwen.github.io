@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="xiao马哥个人博客">
 <meta property="og:description" content="vuex和单纯的全局对象有两点不同：  vuex的状态存储是响应式的：store中的状态发生变化响应的组件也会发生变化。 不能直接改变store中的状态：只能通过commit mutation 改变。  vuex的使用 安装  1npm install vuex --save  使用：确保全局下载过Vue,并且引用,  12import vuex from &amp;apos;vuex&amp;apos;Vue.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-30T11:46:37.191Z">
+<meta property="og:updated_time" content="2019-03-30T11:54:49.431Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue状态管理之vuex">
 <meta name="twitter:description" content="vuex和单纯的全局对象有两点不同：  vuex的状态存储是响应式的：store中的状态发生变化响应的组件也会发生变化。 不能直接改变store中的状态：只能通过commit mutation 改变。  vuex的使用 安装  1npm install vuex --save  使用：确保全局下载过Vue,并且引用,  12import vuex from &amp;apos;vuex&amp;apos;Vue.">
@@ -129,21 +129,22 @@
 <p>然后在store.js中统一导入就可以使用了：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import &#123;moduleA as a&#125;from &apos;./moduleA.js&apos;</span><br><span class="line">import moduleB from &apos;./moduleB.js&apos;</span><br><span class="line">console.log(a)</span><br><span class="line"></span><br><span class="line">let store  = new vuex.Store(&#123;</span><br><span class="line">	...</span><br><span class="line">	modules:&#123;</span><br><span class="line">		a:a,</span><br><span class="line">		b:moduleB</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <h5 id="这里稍微简单总结一下：export和export-default的使用区别"><a href="#这里稍微简单总结一下：export和export-default的使用区别" class="headerlink" title="这里稍微简单总结一下：export和export default的使用区别"></a>这里稍微简单总结一下：export和export default的使用区别</h5><ul>
-<li><p>export 可以倒出一赋值语句，如：  </p>
-   <figure class="highlight plain"><figcaption><span>let moduleA </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line">但是在导入的时候变量名得用&#123;&#125;包起来，如：</span><br></pre></td></tr></table></figure>
-<p>   import {moduleA as a}from ‘./moduleA.js’</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">也可以重命名.</span><br><span class="line"></span><br><span class="line">* export default 一个对象的时候可以先定义对象</span><br></pre></td></tr></table></figure>
-<p>  let moduleB = {}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">然后</span><br></pre></td></tr></table></figure>
-</li>
+<li>export 可以倒出一赋值语句，如：  </li>
 </ul>
-<p>export default moduleB;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">或者    </span><br><span class="line"></span><br><span class="line">``` </span><br><span class="line">export default &#123;&#125;</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">就行，然后导入的时候命名</span><br></pre></td></tr></table></figure></p>
-<p>import moduleB from ‘./moduleB.js’<br><code>`</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">	export let moduleA = &#123;&#125; </span><br><span class="line">``` </span><br><span class="line"> </span><br><span class="line">但是在导入的时候变量名得用&#123;&#125;包起来，如：</span><br></pre></td></tr></table></figure>
+<pre><code>import {moduleA as a}from &apos;./moduleA.js&apos;
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">也可以重命名.</span><br><span class="line"></span><br><span class="line">* export default 一个对象的时候可以先定义对象</span><br></pre></td></tr></table></figure>
+<pre><code>let moduleB = {}
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">然后</span><br></pre></td></tr></table></figure>
+<pre><code>export default moduleB;
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">或者    </span><br><span class="line"></span><br><span class="line">``` </span><br><span class="line">	export default &#123;&#125;</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">就行，然后导入的时候命名</span><br></pre></td></tr></table></figure>
+<pre><code>import moduleB from &apos;./moduleB.js&apos;
+</code></pre><p><code>`</code></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://majianwen.github.io/2019/03/31/vue状态管理之vuex/" data-id="cjtvfl0fz0003q4tgwynny8gb" class="article-share-link">Share</a>
+      <a data-url="https://majianwen.github.io/2019/03/31/vue状态管理之vuex/" data-id="cjtvfvk2j0002q0tghtjfs3mx" class="article-share-link">Share</a>
       
       
     </footer>
