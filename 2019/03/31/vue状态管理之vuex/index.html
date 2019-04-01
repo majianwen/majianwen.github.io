@@ -88,11 +88,11 @@
       
         <a href="/archives/" target="_self">归档</a>
       
-        <a href="/tags/" target="_self">标签</a>
-      
         <a href="/categories/" target="_self">分类</a>
       
-        <a href="/friends/" target="_self">友链</a>
+        <a href="/arithmetic/" target="_self">每日算法</a>
+      
+        <a href="/english/" target="_self">每日英语</a>
       
         <a href="/about/" target="_self">关于</a>
       
@@ -132,20 +132,20 @@
         </li>
       
         <li class="toc-item">
-          <a href="/tags/" target="_self">
-            标签
-          </a>
-        </li>
-      
-        <li class="toc-item">
           <a href="/categories/" target="_self">
             分类
           </a>
         </li>
       
         <li class="toc-item">
-          <a href="/friends/" target="_self">
-            友链
+          <a href="/arithmetic/" target="_self">
+            每日算法
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/english/" target="_self">
+            每日英语
           </a>
         </li>
       
@@ -216,17 +216,12 @@
 <p>然后在store.js中统一导入就可以使用了：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import &#123;moduleA as a&#125;from &apos;./moduleA.js&apos;</span><br><span class="line">import moduleB from &apos;./moduleB.js&apos;</span><br><span class="line">console.log(a)</span><br><span class="line"></span><br><span class="line">let store  = new vuex.Store(&#123;</span><br><span class="line">	...</span><br><span class="line">	modules:&#123;</span><br><span class="line">		a:a,</span><br><span class="line">		b:moduleB</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <h5 id="这里稍微简单总结一下：export和export-default的使用区别"><a href="#这里稍微简单总结一下：export和export-default的使用区别" class="headerlink" title="这里稍微简单总结一下：export和export default的使用区别"></a>这里稍微简单总结一下：export和export default的使用区别</h5><ul>
-<li>export 可以倒出一赋值语句，如：  </li>
+<li>export 可以倒出一赋值语句，如:<code>export let moduleA = {}</code> 但是在导入的时候变量名得用{}包起来，如： <code>import {moduleA as a}from &#39;./moduleA.js&#39;</code></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">	export let moduleA = &#123;&#125; </span><br><span class="line">``` </span><br><span class="line"> </span><br><span class="line">但是在导入的时候变量名得用&#123;&#125;包起来，如：</span><br></pre></td></tr></table></figure>
-<pre><code>import {moduleA as a}from &apos;./moduleA.js&apos;
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">也可以重命名.</span><br><span class="line"></span><br><span class="line">* export default 一个对象的时候可以先定义对象</span><br></pre></td></tr></table></figure>
-<pre><code>let moduleB = {}
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">然后</span><br></pre></td></tr></table></figure>
-<pre><code>export default moduleB;
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">或者    </span><br><span class="line"></span><br><span class="line">``` </span><br><span class="line">	export default &#123;&#125;</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line">就行，然后导入的时候命名</span><br></pre></td></tr></table></figure>
-<pre><code>import moduleB from &apos;./moduleB.js&apos;
-</code></pre><p><code>`</code></p>
+<p>也可以重命名.</p>
+<ul>
+<li>export default 一个对象的时候可以先定义对象  <code>let moduleB = {}</code> 然后  <code>export default moduleB;</code>  或者  <code>export default {}</code>   就行，然后导入的时候命名<br><code>import moduleB from &#39;./moduleB.js&#39;</code></li>
+</ul>
 
   </article>
   <aside class="table-content" id="site-toc">
@@ -275,19 +270,6 @@
         
           <span class="site-footer-item">
             <a href="http://ruanyifeng.com/" target="_blank">阮一峰的个人网站</a>
-          </span>
-        
-      </div>
-    
-      <div class="site-footer-col">
-        <h5 class="site-footer-title">系列教程</h5>
-        
-          <span class="site-footer-item">
-            <a href="https://godbmw.com/categories/webpack4%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B/" target="_blank">webpack4系列教程</a>
-          </span>
-        
-          <span class="site-footer-item">
-            <a href="https://godbmw.com/design-patterns/" target="_blank">设计模式手册</a>
           </span>
         
       </div>

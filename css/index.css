@@ -328,13 +328,13 @@ main {
   left: 0;
   width: 100%;
   height: 60px;
-  border-bottom: #FAFAFA solid 2px;
+  border-bottom: #eff0f6 solid 2px;
   padding-left: 10px;
-  background: #FAFAFA;
+  background: #eff0f6;
   z-index: 300; }
   @media screen and (max-width: 768px) {
     .site-header {
-      background: #F5F5F5; } }
+      background: #eff0f6; } }
   .site-header-brand, .site-header-right {
     display: flex;
     align-items: center; }
