@@ -404,19 +404,6 @@ body {
       font-size: 16px;
       line-height: 30px;
       margin-bottom: 15px; }
-    .article > .content pre, .article > .content .highlight {
-      overflow: auto;
-      padding: 0;
-      margin-bottom: 15px;
-      color: #333;
-      background: #f8f8f8; }
-      .article > .content pre .gutter, .article > .content .highlight .gutter {
-        text-align: right; }
-        .article > .content pre .gutter pre, .article > .content .highlight .gutter pre {
-          background-color: #f0f0f0;
-          padding: 0 10px; }
-      .article > .content pre .code, .article > .content .highlight .code {
-        padding: 0 10px; }
     .article > .content ul, .article > .content ol {
       margin: 15px 0;
       margin-left: 15px; }
